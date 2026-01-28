@@ -20,7 +20,7 @@ public class QueryService {
 
     public Query createQuery(CreateQueryRequest request) {
 
-        // Validate user exists (USER-SERVICE)
+       
     	String url = "http://USER-SERVICE/api/auth/users/" + request.getUserId();
     	restTemplate.getForObject(url, Object.class);
 
@@ -33,7 +33,7 @@ public class QueryService {
         return queryRepository.save(query);
     }
 
-    // ✅ ADD THIS METHOD
+
     public Query getQueryById(Long id) {
         return queryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Query not found with id: " + id));
