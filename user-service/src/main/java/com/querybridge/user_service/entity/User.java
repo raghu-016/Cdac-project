@@ -19,6 +19,12 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+    
+    @Column(length = 500, nullable = true)
+    private String bio;
+    
+    @Column(nullable = true)
+    private String role;
 
     public User() {}
 
@@ -33,4 +39,22 @@ public class User {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	
 }
