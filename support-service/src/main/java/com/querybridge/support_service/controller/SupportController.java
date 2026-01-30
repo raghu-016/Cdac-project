@@ -12,7 +12,7 @@ import com.querybridge.support_service.service.SupportService;
 
 @RestController
 @RequestMapping("/api/support")
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5174")
 public class SupportController {
 
     private final SupportService supportService;

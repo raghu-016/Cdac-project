@@ -12,7 +12,7 @@ import com.querybridge.answer_service.service.AnswerService;
 
 @RestController
 @RequestMapping("/api/answers")
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5174")
 public class AnswerController {
 
     private final AnswerService answerService;

@@ -23,7 +23,7 @@ public class AnswerService {
 
         // 🔹 Validate USER
         restTemplate.getForObject(
-            "http://USER-SERVICE/api/auth/users/" + request.getUserId(),
+            "http://USER-SERVICE/api/users/" + request.getUserId(),
             Object.class
         );
 

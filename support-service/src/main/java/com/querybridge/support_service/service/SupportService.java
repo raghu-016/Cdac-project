@@ -24,7 +24,7 @@ public class SupportService {
 
         // 🔹 Validate user exists
         restTemplate.getForObject(
-            "http://USER-SERVICE/api/auth/users/" + request.getUserId(),
+            "http://USER-SERVICE/api/users/" + request.getUserId(),
             Object.class
         );
 

@@ -1,12 +1,13 @@
 package com.querybridge.query_service.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.querybridge.query_service.dto.CreateQueryRequest;
 import com.querybridge.query_service.entity.Query;
 import com.querybridge.query_service.repository.QueryRepository;
-
 @Service
 public class QueryService {
 
@@ -21,7 +22,7 @@ public class QueryService {
     public Query createQuery(CreateQueryRequest request) {
 
        
-    	String url = "http://USER-SERVICE/api/auth/users/" + request.getUserId();
+    	String url = "http://USER-SERVICE/api/users/" + request.getUserId();
     	restTemplate.getForObject(url, Object.class);
 
 
@@ -32,6 +33,8 @@ public class QueryService {
 
         return queryRepository.save(query);
     }
+    public List<Query> getAllQueries() { 
+    	return queryRepository.findAll(); }
 
 
     public Query getQueryById(Long id) {

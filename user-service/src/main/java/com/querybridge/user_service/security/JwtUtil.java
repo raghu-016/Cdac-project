@@ -2,6 +2,7 @@ package com.querybridge.user_service.security;
 
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
@@ -16,7 +17,7 @@ public class JwtUtil {
                 .setSubject(email)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 86400000))
-                .signWith(key)
+                .signWith(key,SignatureAlgorithm.HS256)
                 .compact();
     }
 }
