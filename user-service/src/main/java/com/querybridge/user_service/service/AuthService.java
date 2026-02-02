@@ -1,6 +1,7 @@
 package com.querybridge.user_service.service;
 
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.querybridge.user_service.dto.LoginRequest;
 import com.querybridge.user_service.dto.RegisterRequest;
@@ -11,16 +12,21 @@ import com.querybridge.user_service.repository.UserRepository;
 public class AuthService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    
+    public AuthService(UserRepository userRepository,
+            PasswordEncoder passwordEncoder) {
+    	this.userRepository = userRepository;
+    	this.passwordEncoder = passwordEncoder;
+}
 
     public User register(RegisterRequest request) {
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+        //user.setPassword(request.getPassword());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         return userRepository.save(user);
     }
 
@@ -28,9 +34,12 @@ public class AuthService {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        if (!user.getPassword().equals(request.getPassword())) {
-            throw new RuntimeException("Invalid password");
-        }
+//        if (!user.getPassword().equals(request.getPassword())) {
+//            throw new RuntimeException("Invalid password");
+//        }
+		if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+			throw new RuntimeException("Invalid password");
+		}	
         return user;
     }
     public User authenticate(String email, String password) {
@@ -39,9 +48,13 @@ public class AuthService {
                     new RuntimeException("Invalid email or password")
                 );
 
-        if (!user.getPassword().equals(password)) {
-            throw new RuntimeException("Invalid email or password");
+//        if (!user.getPassword().equals(password)) {
+//            throw new RuntimeException("Invalid email or password");
+//        }
+        if (!passwordEncoder.matches(password,user.getPassword())) {
+        	 throw new RuntimeException("Invalid email or password");
         }
+
 
         return user;
     }

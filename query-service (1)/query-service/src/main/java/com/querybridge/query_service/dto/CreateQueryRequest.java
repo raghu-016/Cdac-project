@@ -8,6 +8,7 @@ public class CreateQueryRequest {
 
     @NotNull
     private Long userId;
+//    private Long userName;
 
     @NotBlank
     private String title;
@@ -17,9 +18,17 @@ public class CreateQueryRequest {
 
     public Long getUserId() { return userId; }
     public void setUserId(Long userId) { this.userId = userId; }
+    
+    
 
     public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+//    public Long getUserName() {
+//		return userName;
+//	}
+//	public void setUserName(Long userName) {
+//		this.userName = userName;
+//	}
+	public void setTitle(String title) { this.title = title; }
 
     public String getBody() { return body; }
     public void setBody(String body) { this.body = body; }

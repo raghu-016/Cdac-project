@@ -42,4 +42,5 @@ public class Query {
     public void setBody(String body) { this.body = body; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
+
 }
