@@ -8,7 +8,7 @@ public class CreateQueryRequest {
 
     @NotNull
     private Long userId;
-//    private Long userName;
+    private String username;
 
     @NotBlank
     private String title;
@@ -22,12 +22,12 @@ public class CreateQueryRequest {
     
 
     public String getTitle() { return title; }
-//    public Long getUserName() {
-//		return userName;
-//	}
-//	public void setUserName(Long userName) {
-//		this.userName = userName;
-//	}
+    public String getFname() {
+		return username;
+	}
+	public void setFname(String username) {
+		this.username = username;
+	}
 	public void setTitle(String title) { this.title = title; }
 
     public String getBody() { return body; }

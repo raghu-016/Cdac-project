@@ -32,6 +32,7 @@ public class QueryController {
                 queryService.getQueryById(id)
         );
     }
+
     // 🔹 ADD THIS TO QueryController.java
     @GetMapping
     public ResponseEntity<List<Query>> getAllQueries() {

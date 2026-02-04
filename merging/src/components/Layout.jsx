@@ -11,9 +11,11 @@ const Layout = () => {
     if (!user) return <Navigate to="/login" replace />;
 
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
             <Sidebar />
-            <Outlet />
+            <main style={{ flex: 1, overflowY: 'auto' }}>
+                <Outlet />
+            </main>
         </div>
     );
 };

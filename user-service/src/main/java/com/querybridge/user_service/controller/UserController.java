@@ -46,4 +46,11 @@ public class UserController {
 
         return ResponseEntity.ok(userRepository.save(user));
     }
+    // 🔹 GET USERNAME BY ID
+    @GetMapping("/{id}/username")
+    public String getUserNameById(@PathVariable Long id) {
+        return userRepository.findById(id)
+                .map(User::getName)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }
