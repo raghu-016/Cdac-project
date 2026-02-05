@@ -17,7 +17,7 @@ public class JwtAuthFilter implements GlobalFilter {
 
         String path = exchange.getRequest().getURI().getPath();
 
-        // 🔓 Public endpoints
+        //  Public endpoints
         if (path.contains("/login") || path.contains("/register")) {
             return chain.filter(exchange);
         }

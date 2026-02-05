@@ -2,7 +2,6 @@ package com.querybridge.query_service.service;
 
 import java.util.List;
 
-import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,8 +21,8 @@ public class QueryService {
 
     public Query createQuery(CreateQueryRequest request) {
 
- 	String url = "http://USER-SERVICE/api/users/" + request.getUserId();
-		
+       
+    	String url = "http://USER-SERVICE/api/users/" + request.getUserId();
     	restTemplate.getForObject(url, Object.class);
 
 
@@ -42,6 +41,4 @@ public class QueryService {
         return queryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Query not found with id: " + id));
     }
-
-	
 }
